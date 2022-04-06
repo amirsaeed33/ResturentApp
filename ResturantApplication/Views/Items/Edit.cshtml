@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ResturantApplication.Models.Items>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit</h2>
+<br />
+
+@if (!Model.Any())
+ {
+    <p>We Dont Have Any Item Yet!</p>
+ }
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>ITEMS</th>
+                <th>ITEMS PRICE</th>
+            </tr> 
+        </thead>
+
+        <tbody>
+            @foreach (var items in Model)
+             {
+                <tr>
+                    <td>@Html.ActionLink(@items.Names, "Edit", "Items", new { id = items.Id }, null)</td>
+                    <td>
+                        @items.Names
+                        @items.ItemPrice
+                    </td>
+                </tr>
+             }
+
+        </tbody>
+    </table>

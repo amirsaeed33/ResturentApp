@@ -1,0 +1,26 @@
+﻿@model ResturantApplication.Models.Items
+@{
+    ViewBag.Title = "NewItems";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>NewItems</h2>
+
+
+@using (Html.BeginForm("Save", "Items"))
+{
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.Names)
+        @Html.TextBoxFor(i => i.Names, new { @class = "form-control", id = "Items Name" })
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(i => i.ItemPrice)
+        @Html.TextBoxFor(i => i.ItemPrice, new { @class = "form-control", id = "Items price" })
+    </div>
+
+    @Html.HiddenFor(i => i.Id)
+
+    <button type="submit" class="btn btn-primary"> Add To List</button>
+}

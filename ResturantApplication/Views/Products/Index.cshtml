@@ -1,0 +1,39 @@
+﻿@model IEnumerable<ResturantApplication.Models.Product>
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>LIST OF ITEMS SOLD</h2>
+
+
+<table class="table table-striped table-bordered table-hover">
+    <thead>
+        <tr>
+
+            <th> ITEM NAME </th>
+            <th> PRICE </th>
+            <th> QUANTITY </th>
+            <th> DISCOUNT </th>
+            <th> TOTAL </th>
+            <th> PAYMENT TYPE</th>
+
+        </tr>
+
+    </thead>
+
+    <tbody>
+        @foreach (var product in Model)
+        {
+            var naira = "\u20A6";
+            <tr>
+                <td>@product.Items.Names</td>
+                <td>@naira @product.Items.ItemPrice</td>
+                <td>@product.Quantity</td>
+                <td>@product.Discount</td>
+                <td>@product.Total</td>
+                <td>@product.PaymentType.Name</td>
+            </tr>
+
+        }
+    </tbody>
+</table>
