@@ -44,9 +44,9 @@ namespace ResturantApplication.Controllers
            return View(data);
         }
       
-        public ActionResult Details(int id)
+        public async Task<ActionResult> Details(int id)
         {
-            var items = _context.Items.SingleOrDefault(i => i.Id == id);
+            var items = await _InventoryAppservice.GetItemById(id);
             if (items == null)
             {
                 return HttpNotFound();
