@@ -3,14 +3,21 @@
 @{
     ViewBag.Title = "ItemsIndex";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    var i = 0;
 }
-
+<div class="row">
+    <br />
+    <div>
+        <button onclick="AddProduct()" class="btn btn-success" data-ng-controller="btn-link js-edit">Add Product</button>
+    </div>
+</div>
 
 <br />
 
 <table id="customers" class="table table-striped table-bordered table-hover" style="width: 100%">
     <thead>
         <tr>
+            <th>Sr </th>
             <th>ITEMS NAME </th>
             <th>ITEMS PRICE</th>
             <th>Alert Qty</th>
@@ -23,21 +30,26 @@
         @foreach (var items in Model)
         {
             var naira = "\u20A6";
-            <tr id="@string.Format("{0}-{1}","Item",items.Id)">
-                <td>
-                    @Html.ActionLink(@items.Names, "NewItems", "Items", new { id = items.Id }, null)
-                </td>
+            i = i + 1;
+        <tr id="@string.Format("{0}-{1}","Item",items.Id)">
+            <td>
+                @i
+            </td>
+            <td>
+                @items.Names
+            </td>
 
 
-                <td>@items.ItemPrice</td>
-                <td>@items.MinQty</td>
-                <td>
-                    <button onclick="Edit()" class="btn btn-warning" data-ng-controller="btn-link js-edit">  EDIT</button>
-                    <button onclick="Delete(@items.Id)" class="btn btn-danger" data-item-id="btn-link js-delete"> DELETE</button>
-                </td>
-
-            </tr>
-         }
+            <td>@items.ItemPrice</td>
+            <td>@items.MinQty</td>
+            <td>
+                <button onclick="Edit(@items.Id)" class="btn btn-warning" data-ng-controller="btn-link js-edit">  EDIT</button>
+                <button onclick="Delete(@items.Id)" class="btn btn-danger" data-item-id="btn-link js-delete"> DELETE</button>
+            </td>
+           
+        </tr>
+           
+        }
 
     </tbody>
 </table>
@@ -47,8 +59,18 @@
         $(document).ready(function () {
             $('#items').DataTable();
         });
-        function Delete(Id) {
-            alert(Id+ ' <-- Your Id Please Do Code here for delete items');
+        function Delete(id) {
+            debugger
+            if (confirm("Are you Sure u want to Delete this -- > " + id)) {
+
+            window.location = "/Items/Delete?id=" + id;
+            }
+        }
+        function AddProduct() {
+            window.location = "/Items/NewItems";
+        }
+        function Edit(id) {
+            window.location = "/Items/NewItems?id="+id;
         }
     </script>
 }

@@ -28,19 +28,23 @@ namespace ResturantApplication.Controllers
 
 
         // GET: Items
-        public ActionResult ItemsIndex()
+        public async Task<ActionResult> ItemsIndex()
         {
 
-            var items = _context.Items.ToList();
+            var items =await _InventoryAppservice.GetItemList();
             return View(items);
         }
 
 
         public async Task<ActionResult> NewItems(int id=-1)
         {
+            ViewBag.Heading = "Add New Product";
             var data = new Items();
-           if(id>0)
-             data= await _InventoryAppservice.GetItemById(id);
+            if (id > 0)
+            {
+                ViewBag.Heading = "Update product";
+                data = await _InventoryAppservice.GetItemById(id);
+            }
            return View(data);
         }
       
@@ -72,6 +76,7 @@ namespace ResturantApplication.Controllers
             }
             if (items.Id == 0)
             {
+                items.IsActive = true;
                 _context.Items.Add(items);
             }
             else
@@ -131,9 +136,17 @@ namespace ResturantApplication.Controllers
         }
 
 
-        public ActionResult Delete()
+        public async Task<ActionResult> Delete(int id)
         {
-            return View();
+            if (id > 0)
+            {
+                var itemInDb = _context.Items.Single(i => i.Id == id);
+               
+                itemInDb.IsDeleted = true;
+                
+                _context.SaveChanges();
+            }
+            return RedirectToAction("ItemsIndex", "Items");
         }
 
 

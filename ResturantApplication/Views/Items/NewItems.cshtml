@@ -1,30 +1,56 @@
 ﻿@model ResturantApplication.Models.Items
 @{
-    ViewBag.Title = "NewItems";
+    ViewBag.Title = "New Items";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>NewItems</h2>
-
+<h2>@ViewBag.Heading</h2>
 
 @using (Html.BeginForm("Save", "Items"))
 {
-
-    <div class="form-group">
-        @Html.LabelFor(i => i.Names)
-        @Html.TextBoxFor(i => i.Names, new { @class = "form-control", id = "Items Name" })
+<div class="row">
+    <div class="col-md-6 form-group mb-6">
+        <div class="formgroup">
+            @Html.LabelFor(s=>s.Names) *
+            @Html.TextBoxFor(m => m.Names, null, new
+       {  
+           @id = "MinNumber",
+           @class = "form-control",
+           tabindex = 1,
+           placeholder = "Enter Product Name"
+       })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(i => i.MinQty)
+            @Html.TextBoxFor(i => i.MinQty, new { @class = "form-control", id = "AlertQty" })
+        </div>
+    </div>
+    <div class="col-md-6 form-group mb-6">
+        <div class="form-group">
+            @Html.LabelFor(i => i.ItemPrice)
+            @Html.TextBoxFor(i => i.ItemPrice, new { @class = "form-control", id = "Items price" })
+        </div>
+        <div class="formgroup">
+            <label class="switch pr-5 switch-primary mr-3">
+                <span>Status</span>
+                <input id="IsActive" data-id="IsActive"
+                       @(Model.IsActive || !(Model.Id > 0) ? Html.Raw("checked=\"checked\"") : Html.Raw(""))
+                       type="checkbox" tabindex="6">
+                <span class="slider"></span>
+            </label>
+        </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(i => i.ItemPrice)
-        @Html.TextBoxFor(i => i.ItemPrice, new { @class = "form-control", id = "Items price" })
-    </div> 
-    <div class="form-group">
-        @Html.LabelFor(i => i.MinQty)
-        @Html.TextBoxFor(i => i.MinQty, new { @class = "form-control", id = "AlertQty" })
-    </div>
+
+
 
     @Html.HiddenFor(i => i.Id)
 
-    <button type="submit" class="btn btn-primary"> Add To List</button>
+    <div class="card-footer">
+
+        <button type="submit" class="btn btn-primary"> Add To List</button>
+    </div>
+
+</div>
+    
 }

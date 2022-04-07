@@ -3207,12 +3207,14 @@ fieldset:disabled .btn {
   color: #fff;
   background-color: #02b875;
   border-color: #02b875;
+  
 }
 
 .btn-success:hover {
   color: #fff;
   background-color: #029c63;
   border-color: #02935e;
+  
 }
 
 .btn-check:focus + .btn-success, .btn-success:focus {

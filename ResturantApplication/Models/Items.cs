@@ -15,6 +15,7 @@ namespace ResturantApplication.Models
         public int ItemPrice { get; set; }
         [Display(Name = "Alert Quantity")]
         public int MinQty { get; set; }
+        [Display(Name = "Is Active")]
         public bool IsActive { get; set; }
         public bool IsDeleted { get; set; }
     }

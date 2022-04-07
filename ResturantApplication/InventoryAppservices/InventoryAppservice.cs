@@ -19,6 +19,10 @@ namespace ResturantApplication.InventoryAppservices
         {
             return  _context.Items.AsNoTracking()                
                 .Where(s => s.Id == Id).FirstOrDefault();
+        } 
+        public async Task<List<Items>> GetItemList()
+        {
+            return _context.Items.Where(s=>!s.IsDeleted).ToList();
         }
     }
 }
