@@ -6,17 +6,21 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using ResturantApplication.InventoryAppservices;
+using System.Threading.Tasks;
 
 namespace ResturantApplication.Controllers
 {
     public class ItemsController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private readonly InventoryAppservice _InventoryAppservice;
+
         public ItemsController()
         {
             _context = new ApplicationDbContext();
+            _InventoryAppservice = new InventoryAppservice();
         }
-
         protected override void Dispose(bool disposing)
         {
             _context.Dispose();
@@ -32,9 +36,12 @@ namespace ResturantApplication.Controllers
         }
 
 
-        public ActionResult NewItems()
+        public async Task<ActionResult> NewItems(int id=-1)
         {
-            return View();
+            var data = new Items();
+           if(id>0)
+             data= await _InventoryAppservice.GetItemById(id);
+           return View(data);
         }
       
         public ActionResult Details(int id)
@@ -56,7 +63,9 @@ namespace ResturantApplication.Controllers
                 var itemInDb = new Items
                 {
                     ItemPrice = items.ItemPrice,
-                    Names = items.Names
+                    MinQty = items.MinQty,
+                    IsActive = true,
+                    IsDeleted = false,
 
                 };
                 return View("NewItems", itemInDb);
@@ -68,8 +77,10 @@ namespace ResturantApplication.Controllers
             else
             {
                 var itemInDb = _context.Items.Single(i => i.Id == items.Id);
-                itemInDb.Names = items.Names;
                 itemInDb.ItemPrice = items.ItemPrice;
+                itemInDb.MinQty = items.MinQty;
+                itemInDb.IsActive = true;
+                itemInDb.IsDeleted = false;
             }
             _context.SaveChanges();
 

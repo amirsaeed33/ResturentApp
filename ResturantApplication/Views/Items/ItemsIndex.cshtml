@@ -13,6 +13,7 @@
         <tr>
             <th>ITEMS NAME </th>
             <th>ITEMS PRICE</th>
+            <th>Alert Qty</th>
             <th>ACTION </th>
 
         </tr>
@@ -24,11 +25,12 @@
             var naira = "\u20A6";
             <tr id="@string.Format("{0}-{1}","Item",items.Id)">
                 <td>
-                    @Html.ActionLink(@items.Names, "Details", "Items", new { id = items.Id }, null)
+                    @Html.ActionLink(@items.Names, "NewItems", "Items", new { id = items.Id }, null)
                 </td>
 
 
                 <td>@items.ItemPrice</td>
+                <td>@items.MinQty</td>
                 <td>
                     <button onclick="Edit()" class="btn btn-warning" data-ng-controller="btn-link js-edit">  EDIT</button>
                     <button onclick="Delete(@items.Id)" class="btn btn-danger" data-item-id="btn-link js-delete"> DELETE</button>

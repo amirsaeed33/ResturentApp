@@ -18,6 +18,10 @@
     <div class="form-group">
         @Html.LabelFor(i => i.ItemPrice)
         @Html.TextBoxFor(i => i.ItemPrice, new { @class = "form-control", id = "Items price" })
+    </div> 
+    <div class="form-group">
+        @Html.LabelFor(i => i.MinQty)
+        @Html.TextBoxFor(i => i.MinQty, new { @class = "form-control", id = "AlertQty" })
     </div>
 
     @Html.HiddenFor(i => i.Id)

@@ -175,6 +175,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="InventoryAppservices\InventoryAppservice.cs" />
     <Compile Include="Migrations\202202221334102_InitialModel.cs" />
     <Compile Include="Migrations\202202221334102_InitialModel.Designer.cs">
       <DependentUpon>202202221334102_InitialModel.cs</DependentUpon>
@@ -186,6 +187,10 @@
     <Compile Include="Migrations\202202251303064_AddEmployeePosition1.cs" />
     <Compile Include="Migrations\202202251303064_AddEmployeePosition1.Designer.cs">
       <DependentUpon>202202251303064_AddEmployeePosition1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202204070809126_AddbitInItemsTable.cs" />
+    <Compile Include="Migrations\202204070809126_AddbitInItemsTable.Designer.cs">
+      <DependentUpon>202204070809126_AddbitInItemsTable.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -316,6 +321,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202202251303064_AddEmployeePosition1.resx">
       <DependentUpon>202202251303064_AddEmployeePosition1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204070809126_AddbitInItemsTable.resx">
+      <DependentUpon>202204070809126_AddbitInItemsTable.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
