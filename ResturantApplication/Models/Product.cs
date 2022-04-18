@@ -16,8 +16,8 @@ namespace ResturantApplication.Models
         public int Discount { get; set; }
         public int Quantity { get; set; }
         public int Total { get; set; }
-        public EmployeePosition EmployeePosition { get; set; }
-        public byte EmployeePositionId { get; set; }
+        public Cashier Cashier { get; set; }
+        public byte CashierId { get; set; }
 
 
     }

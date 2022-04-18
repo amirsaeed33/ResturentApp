@@ -10,9 +10,6 @@ namespace ResturantApplication.ViewModel
     public class ItemsViewModel
     {
         public List<Product> Product { get; set; }
-
-
-
         public int? Id { get; set; }
 
         [Required(ErrorMessage = "Please Enter Item Name.")]

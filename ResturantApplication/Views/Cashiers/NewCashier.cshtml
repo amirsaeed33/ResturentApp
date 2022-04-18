@@ -1,0 +1,179 @@
+﻿@model ResturantApplication.Models.Cashier
+@{
+    ViewBag.Title = "NewCashier";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<style>
+    * {
+        padding: 0;
+        margin: 0;
+        font-family: sans-serif;
+        color: mediumblue;
+    }
+
+    body {
+        background-image: url('../../Backer.jpg');
+        background-size: cover;
+    }
+
+    }
+    /*.row h1{
+        font-size: 30px;
+        color: blue;
+        text-align: center;
+        text-transform: uppercase;
+        margin: 40px 0;
+    }*/
+
+    .row h3 {
+        font-size: 20px;
+        margin: 15px 0;
+    }
+
+    h1{
+        color: white;
+    }
+
+    select {
+        font-size: 16px;
+        padding: 15px 10px;
+        width: 100%;
+        height: 30%;
+        border: 20px;
+        border-color: black;
+        border-radius: 5px;
+        outline: 5px;
+    }
+
+    input {
+        width: 16px;
+        height: 16px;
+    }
+
+    button {
+        font-size: 30px;
+        width: 100px;
+        height: 50px;
+        border-radius: 5px;
+    }
+
+
+    fieldset {
+        border: 1px solid #add !important;
+        margin: 0;
+        xmin-width: 0;
+        padding: relative;
+        position: relative;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+        padding-left: 10px !important;
+    }
+
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+        
+    }
+</style>
+
+
+
+@using (Html.BeginForm("Save", "Cashier"))
+{
+    <h1>Cashier Form</h1>
+    <fieldset>
+        <legend>
+            Personal Information:
+        </legend>
+
+        <div class="container">
+            <div class="row-cols-1">
+                <div class="col-md-4">
+                    <div class="formgroup">
+                        <h3>Full Name:</h3>
+                        <h5>
+                            @Html.TextBoxFor(c => c.FullName, null, new
+                    { @id = "MinNumber", @class = "form-control", tabindex = 1, placeholder = "Surname first" })
+                        </h5>
+                        @Html.ValidationMessageFor(c => c.FullName)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Date of Birth:</h3>
+                        <h5>@Html.TextBoxFor(c => c.BirthDate, new { @class = "form-control", id = "BirthDate", placeholder = "Date of Birth (01 Jan 1990)" })</h5>
+                        @Html.ValidationMessageFor(c => c.BirthDate)
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Gender:</h3>
+                        @*<h5>@Html.TextBoxFor(e => e.Gender, new { @class = "form-control", id = "Gender", placeholder = "E.g Male or Female" })</h5>*@
+                        <select name="Gender" id="Gender">
+                            <option value="none" selected disabled hidden> Select Gender</option>
+                            <option value="male">Male</option>
+                            <option value="female">Female</option>
+                        </select>
+
+                        @Html.ValidationMessageFor(c => c.Gender)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            Contact Information:
+        </legend>
+        <div class="container">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h3>Phone Number:</h3>
+                    <h5>@Html.TextBoxFor(c => c.PhoneNumber, new { @class = "form-control", id = "PhoneNumber", placeholder = "E.g +234 7012345678" })</h5>
+                    @Html.ValidationMessageFor(c => c.PhoneNumber)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h3>Email Address:</h3>
+                    <h5>@Html.TextBoxFor(c => c.EmailAddress, new { @class = "form-control", id = "EmailAddress", placeholder = "E.g somebody@gmail.com/yahoo.com" })</h5>
+                    @Html.ValidationMessageFor(c => c.EmailAddress)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="formgroup">
+                    <h3>
+                        <label class="switch pr-5 switch-primary mr-3">
+                            <span>ComputerLiterate?</span>
+                            <input id="ComputerLiterate" data-id="ComputerLiterate"
+                                   @(Model.ComputerLiterate || !(Model.Id > 0) ? Html.Raw("checked=\"checked\"") : Html.Raw(""))
+                                   type="checkbox" tabindex="6">
+                            <span class="slider"></span>
+                        </label>
+                    </h3>
+                </div>
+            </div>
+        </div>
+
+        <div class="card-footer">
+
+            <button type="submit" class="btn-success">Save</button>
+        </div>
+
+    </fieldset>
+
+
+    @Html.HiddenFor(i => i.Id)
+
+}

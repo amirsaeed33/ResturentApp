@@ -24,8 +24,12 @@ namespace ResturantApplication.Models
         public DbSet<Product> Products { get; set; }
         public DbSet<Items> Items { get; set; }
         public DbSet<PaymentType> PaymentTypes { get; set; }
-       
-        
+        public DbSet<Cashier> Cashiers { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderDetails> OrderDetails { get; set; }
+        public DbSet<Transaction> Transactions { get; set; }
+
+
 
         public ApplicationDbContext()
             : base("RestaurantApplication", throwIfV1Schema: false)

@@ -438,7 +438,6 @@ C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\bin\Microsoft.O
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.InitialModel.resources
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.PopulatePaymentType.resources
-C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddEmployeePosition1.resources
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddbitInItemsTable.resources
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.csproj.GenerateResource.cache
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.csproj.CoreCompileInputs.cache
@@ -447,3 +446,10 @@ C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\Restu
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.pdb
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.csproj.AssemblyReference.cache
 C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.ApplyAnnotationsToItemsNames.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddChanges.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.Unknown.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddCashier.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.Unknown2.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddOrder.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddOrderDetails.resources
+C:\Users\User\Documents\GitHub\ResturentApp\ResturantApplication\obj\Debug\ResturantApplication.Migrations.AddTransaction.resources

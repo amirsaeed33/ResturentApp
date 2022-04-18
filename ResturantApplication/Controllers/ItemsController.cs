@@ -6,7 +6,7 @@ using System.Data.Entity;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using ResturantApplication.InventoryAppservices;
+using ResturantApplication.InventoryAppservices2;
 using System.Threading.Tasks;
 
 namespace ResturantApplication.Controllers

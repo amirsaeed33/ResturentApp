@@ -168,6 +168,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CashiersController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ItemsController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
@@ -176,6 +177,7 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="InventoryAppservices\InventoryAppservice.cs" />
+    <Compile Include="InventoryAppservices\InventoryAppservice2.cs" />
     <Compile Include="Migrations\202202221334102_InitialModel.cs" />
     <Compile Include="Migrations\202202221334102_InitialModel.Designer.cs">
       <DependentUpon>202202221334102_InitialModel.cs</DependentUpon>
@@ -183,10 +185,6 @@
     <Compile Include="Migrations\202202230713414_PopulatePaymentType.cs" />
     <Compile Include="Migrations\202202230713414_PopulatePaymentType.Designer.cs">
       <DependentUpon>202202230713414_PopulatePaymentType.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202202251303064_AddEmployeePosition1.cs" />
-    <Compile Include="Migrations\202202251303064_AddEmployeePosition1.Designer.cs">
-      <DependentUpon>202202251303064_AddEmployeePosition1.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202204070809126_AddbitInItemsTable.cs" />
     <Compile Include="Migrations\202204070809126_AddbitInItemsTable.Designer.cs">
@@ -196,20 +194,54 @@
     <Compile Include="Migrations\202204162057515_ApplyAnnotationsToItemsNames.Designer.cs">
       <DependentUpon>202204162057515_ApplyAnnotationsToItemsNames.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202204291055077_Add-Changes.cs" />
+    <Compile Include="Migrations\202204291055077_Add-Changes.Designer.cs">
+      <DependentUpon>202204291055077_Add-Changes.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205031526395_Unknown.cs" />
+    <Compile Include="Migrations\202205031526395_Unknown.Designer.cs">
+      <DependentUpon>202205031526395_Unknown.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091616358_AddCashier.cs" />
+    <Compile Include="Migrations\202205091616358_AddCashier.Designer.cs">
+      <DependentUpon>202205091616358_AddCashier.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091620323_Unknown2.cs" />
+    <Compile Include="Migrations\202205091620323_Unknown2.Designer.cs">
+      <DependentUpon>202205091620323_Unknown2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091653289_AddOrder.cs" />
+    <Compile Include="Migrations\202205091653289_AddOrder.Designer.cs">
+      <DependentUpon>202205091653289_AddOrder.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091659078_AddOrderDetails.cs" />
+    <Compile Include="Migrations\202205091659078_AddOrderDetails.Designer.cs">
+      <DependentUpon>202205091659078_AddOrderDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205091704545_AddTransaction.cs" />
+    <Compile Include="Migrations\202205091704545_AddTransaction.Designer.cs">
+      <DependentUpon>202205091704545_AddTransaction.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
-    <Compile Include="Models\EmployeePosition.cs" />
+    <Compile Include="Models\Cashier.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Items.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Order.cs" />
+    <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\PaymentType.cs" />
     <Compile Include="Models\Product.cs" />
+    <Compile Include="Models\Transaction.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="ViewModel\EmployeePositionViewModel.cs" />
+    <Compile Include="ViewModel\CashierViewModel.cs" />
     <Compile Include="ViewModel\ItemsViewModel.cs" />
+    <Compile Include="ViewModel\OrderDetailsViewModel.cs" />
+    <Compile Include="ViewModel\OrderViewModel.cs" />
     <Compile Include="ViewModel\PaymentTypeViewModel.cs" />
     <Compile Include="ViewModel\ProductViewModel.cs" />
+    <Compile Include="ViewModel\TransactionViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Apple.jpg" />
@@ -300,6 +332,8 @@
     <Content Include="Views\Items\NewItems.cshtml" />
     <Content Include="Views\Items\ItemsIndex.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
+    <Content Include="Views\Cashiers\CashierIndex.cshtml" />
+    <Content Include="Views\Cashiers\NewCashier.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -323,14 +357,32 @@
     <EmbeddedResource Include="Migrations\202202230713414_PopulatePaymentType.resx">
       <DependentUpon>202202230713414_PopulatePaymentType.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202202251303064_AddEmployeePosition1.resx">
-      <DependentUpon>202202251303064_AddEmployeePosition1.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204070809126_AddbitInItemsTable.resx">
       <DependentUpon>202204070809126_AddbitInItemsTable.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202204162057515_ApplyAnnotationsToItemsNames.resx">
       <DependentUpon>202204162057515_ApplyAnnotationsToItemsNames.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202204291055077_Add-Changes.resx">
+      <DependentUpon>202204291055077_Add-Changes.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205031526395_Unknown.resx">
+      <DependentUpon>202205031526395_Unknown.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091616358_AddCashier.resx">
+      <DependentUpon>202205091616358_AddCashier.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091620323_Unknown2.resx">
+      <DependentUpon>202205091620323_Unknown2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091653289_AddOrder.resx">
+      <DependentUpon>202205091653289_AddOrder.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091659078_AddOrderDetails.resx">
+      <DependentUpon>202205091659078_AddOrderDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205091704545_AddTransaction.resx">
+      <DependentUpon>202205091704545_AddTransaction.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

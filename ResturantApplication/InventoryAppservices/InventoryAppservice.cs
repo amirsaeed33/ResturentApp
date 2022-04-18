@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using System.Web;
 
-namespace ResturantApplication.InventoryAppservices
+namespace ResturantApplication.InventoryAppservices2
 {
     public class InventoryAppservice
     {
