@@ -40,7 +40,7 @@
             </td>
 
 
-            <td>@items.ItemPrice</td>
+            <td>@naira @items.ItemPrice</td>
             <td>@items.MinQty</td>
             <td>
                 <button onclick="Edit(@items.Id)" class="btn btn-warning" data-ng-controller="btn-link js-edit">  EDIT</button>
@@ -61,7 +61,7 @@
         });
         function Delete(id) {
             debugger
-            if (confirm("Are you Sure u want to Delete this -- > " + id)) {
+            if (confirm("Are you Sure u want to Delete Item? " )) {
 
             window.location = "/Items/Delete?id=" + id;
             }

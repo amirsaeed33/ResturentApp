@@ -1,226 +1,244 @@
 ﻿@model ResturantApplication.ViewModel.ProductViewModel
-    @{
-        ViewBag.Title = "New";
-    }
+@{
+    ViewBag.Title = "New";
+}
 
-    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-    <script type="text/javascript">
-        $(document).ready(function () {
-            $("Items").val(0);
-            $("#Items").change(function () {
-                debugger;
-                var itemId = $("#Items").val();
-                GetItemPrice(itemId);
-            });
-
-            $("input[type=text]").change(function () {
-                CalculateSubTotal();
-            });
-
-            $("btnAddToList").click(function () {
-                AddToTheItemList();
-            });
+<script type="text/javascript">
+    $(document).ready(function () {
+        $("Items").val(0);
+        $("#Items").change(function () {
+            /*debugger;*/
+            var itemId = $("#Items").val();
+            GetItemPrice(itemId);
         });
 
-        function AddToTheItemList() {
-            var tblItemList = $("#tblRestaurantItemList");
+        $("input[type=text]").change(function () {
+            CalculateSubTotal();
+        });
+
+        $("#btnAddToList").click(function () {
+            AddToTheItemList();
+        });
+        $("#txtQuantity").blur(function () {
+            /*alert($("#txtQuantity").val());*/
             var ItemPrice = $("#txtItemPrice").val();
             var Quantity = $("#txtQuantity").val();
             var Discount = $("#txtDiscount").val();
-            var ItemId = $("#Items").val();
-            var ItemNames = $("#Items option:selected").text();
             var Total = (ItemPrice * Quantity) - Discount;
+           /* alert(Total);*/
+            /*AddToTheItemList();*/
+        });
+    });
 
-            var ItemList = "<tr><td hidden>" +
-                ItemId +
-                "</td><td>" +
-                ItemNames +
-                "</td><td>" +
-                parseFloat(ItemPrice).toFixed(2)+
-                "</td><td>" +
-                parseFloat(Quantity).toFixed(2) +
-                "</td><td>" +
-                parseFloat(Discount).toFixed(2) +
-                "</td><td>" +
-                parseFloat(Total).toFixed(2) +
-                "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItems(this)'/> </tr></tr>";
-            
-            tblItemList.append(ItemList);
-            ResetItems();
-        }
+    function RemoveItem(itemId) {
+        $(itemId).closest('tr').remove();
+    }
 
-        function ResetItems() {
-            $("#txtItemPrice").val('');
-            $("#txtQuantity").val('');
-            $("#txtDiscount").val('');
-            $("#Items").val(0);
-            $("#txtTotal").val("");
-        }
+    function AddToTheItemList() {
+        var tblItemList = $("#tblRestaurantItemList");
+        var ItemPrice = $("#txtItemPrice").val();
+        var Quantity = $("#txtQuantity").val();
+        var Discount = $("#txtDiscount").val();
+        var ItemId = $("#Items").val();
+        var ItemNames = $("#Items option:selected").text();
+        var Total = (ItemPrice * Quantity) - Discount;
 
-        function CalculateSubTotal() {
-            var ItemPrice = $("#txtItemPrice").val();
-            var Quantity = $("#txtQuantity").val();
-            var Discount = $("#txtDiscount").val();  
+        var ItemList = "<tr><td hidden>" +
+            ItemId +
+            "</td><td>" +
+            ItemNames +
+            "</td><td>" +
+            parseFloat(ItemPrice).toFixed(2) +
+            "</td><td>" +
+            parseFloat(Quantity).toFixed(2) +
+            "</td><td>" +
+            parseFloat(Discount).toFixed(2) +
+            "</td><td>" +
+            parseFloat(Total).toFixed(2) +
+            "</td><td> <input type='button' value='Remove' name='remove' class='btn btn-danger' onclick='RemoveItems(this)'/> </tr></tr>";
 
-            var Total = (ItemPrice * Quantity) - Discount;
+        tblItemList.append(ItemList);
+        ResetItems();
+    }
 
-            $("#txtTotal").val(parseFloat(Total).toFixed(2));
-        }
+    function ResetItems() {
+        $("#txtItemPrice").val('');
+        $("#txtQuantity").val('');
+        $("#txtDiscount").val('');
+        $("#Items").val(0);
+        $("#txtTotal").val("");
+    }
 
-        function GetItemPrice(itemId) {
-            //alert(itemId);
-            debugger;
-            $.ajax({
-                async: true,
-                type: 'GET',
-                dataType: 'JSON',
-                contentType: 'application/json; charset=utf-8',
-                url: '/Products/GetItemUnitPrice',
-                data: { Id: itemId },
-                
-                success: function (data) {
-                    debugger;
-                    $("#txtItemPrice").val(parseInt(data));
-                },
-                error: function () {
-                    alert("There is some problem to get the Unit Price.");
-                }
-            });
-        }
+    function CalculateSubTotal() {
+        var ItemPrice = $("#txtItemPrice").val();
+        var Quantity = $("#txtQuantity").val();
+        var Discount = $("#txtDiscount").val();
 
-    </script>
+        var Total = (ItemPrice * Quantity) - Discount;
+
+        $("#txtTotal").val(parseFloat(Total).toFixed(2));
+    }
+
+    function GetItemPrice(itemId) {
+        //alert(itemId);
+        debugger;
+        $.ajax({
+            async: true,
+            type: 'GET',
+            dataType: 'JSON',
+            contentType: 'application/json; charset=utf-8',
+            url: '/Products/GetItemUnitPrice',
+            data: { Id: itemId },
+
+            success: function (data) {
+                debugger;
+                $("#txtItemPrice").val(parseInt(data));
+            },
+            error: function () {
+                alert("There is some problem to get the Unit Price.");
+            }
+        });
+
+    }
+
+</script>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<input id="ItemPrice" placeholder="Item Price"> *
+<input id="Quantity" placeholder="Quantity"> -
+<input id="Discount" placeholder="Discount"> =
+<input id="Total" readonly>
+
+<style>
+    fieldset {
+        border: 1px solid #add !important;
+        margin: 0;
+        xmin-width: 0;
+        padding: relative;
+        position: relative;
+        border-radius: 4px;
+        background-color: #f5f5f5;
+        padding-left: 10px !important;
+    }
+
+    legend {
+        font-size: 14px;
+        font-weight: bold;
+        margin-bottom: 0px;
+        width: 35%;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        padding: 5px 5px 5px 10px;
+        background-color: #ffffff;
+    }
+</style>
 
 
-    <style>
-        fieldset {
-            border: 1px solid #add !important;
-            margin: 0;
-            xmin-width: 0;
-            padding: relative;
-            position: relative;
-            border-radius: 4px;
-            background-color: #f5f5f5;
-            padding-left: 10px !important;
-        }
 
-        legend{
-            font-size: 14px;
-            font-weight: bold;
-            margin-bottom: 0px;
-            width: 35%;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            padding: 5px 5px 5px 10px;
-            background-color: #ffffff;
-        }
-
-    </style>
-
-
-    <fieldset>
-        <legend>
-            Restaurant
-        </legend>
-        <div class="container">
-            <div class="row">
-                @*<div class="col-md-6">
+<fieldset>
+    <legend>
+        Restaurant
+    </legend>
+    <div class="container">
+        <div class="row">
+            @*<div class="col-md-6">
                     <div class="form-group">
                         Cashier :
                         @Html.DropDownList("Cashier", new SelectList(Model.Name, "Value", "Text"), new { @class = "form-controle" })
                     </div>
                 </div>*@
-                
-                <div class="col-md-6">
-                    <div class="form-group">
-                        Payment Type :
-                        @*@Html.LabelFor(p => p.PaymentTypeId)*@
-                        @Html.DropDownListFor(p => p.PaymentTypeId, new SelectList(Model.PaymentTypes, "Id", "Name"), "", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(p => p.PaymentTypes)
-                    </div>
+
+            <div class="col-md-6">
+                <div class="form-group">
+                    Payment Type :
+                    @*@Html.LabelFor(p => p.PaymentTypeId)*@
+                    @Html.DropDownListFor(p => p.PaymentTypeId, new SelectList(Model.PaymentTypes, "Id", "Name"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.PaymentTypes)
                 </div>
-
-            </div>
-        </div>
-    </fieldset>
-
-    <fieldset>
-        <legend>Restaurant Items</legend>
-        <div class="container">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        Items :
-                        @*@Html.LabelFor(p => p.ItemsId)*@
-                        @Html.DropDownListFor(p => p.Items, new SelectList(Model.Items, "Id", "Names"), "", new { @class = "form-control" })
-                        @Html.ValidationMessageFor(p => p.Items)
-
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        Item Price :
-                        <input style="text-align: right" type="text" readonly="readonly" id="txtItemPrice" value=" " name="ItemPrice" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        Quantity :
-                        <input style="text-align: right" type="text" id="txtQuantity" value=" " name="Quantity" class="form-control" />
-                    </div>
-                </div>
-
             </div>
 
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="form-group">
-                        Discount :
-                        <input style="text-align: right" type="text" id="textDiscount" value=" " name="Discount" class="form-control" />
-                    </div>
-                </div>
-
-                <div class="col-md-4">
-                    <div class="form-group">
-                        Total :
-                        <input style="text-align: right" type="text" readonly="readonly" id="txtTotal" value=" " name="Total" class="form-control" />
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="form-group">
-                        <input type="button" style="margin-top: 20px" value="Add To List" name="AddToList" id="btnAddToList" class="btn btn-success" />
-                    </div>
-                </div>
-             </div>
         </div>
-    </fieldset>
-    <fieldset>
-        <legend>Restaurant Listed Items</legend>
-        <table style="width: 100%" id="tblRestaurantItemList">
-            <thead>
-                <tr>
-                    <th hidden>
-                        Item Id
-                    </th>
+    </div>
+</fieldset>
 
-                    <th>Item Name</th>
+<fieldset>
+    <legend>Restaurant Items</legend>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    Items :
+                    @*@Html.LabelFor(p => p.ItemsId)*@
+                    @Html.DropDownListFor(p => p.Items, new SelectList(Model.Items, "Id", "Names"), "", new { @class = "form-control" })
+                    @Html.ValidationMessageFor(p => p.Items)
 
-                    <th>Unit Price</th>
+                </div>
+            </div>
 
-                    <th>Quantity</th>
+            <div class="col-md-4">
+                <div class="form-group">
+                    Item Price :
+                    <input style="text-align: right" type="text" readonly="readonly" id="txtItemPrice" value=" " name="ItemPrice" class="form-control" />
+                </div>
+            </div>
 
-                    <th>Discount</th>
+            <div class="col-md-4">
+                <div class="form-group">
+                    Quantity :
+                    <input style="text-align: right" type="text" id="txtQuantity" value="0" name="Quantity" class="form-control" />
+                </div>
+            </div>
 
-                    <th>Total</th>
+        </div>
 
-                    <th>Action</th>
-                </tr>
-            </thead>
-        </table>
-    </fieldset>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="form-group">
+                    Discount :
+                    <input style="text-align: right" type="text" id="txtDiscount" value="0" name="Discount" class="form-control" />
+                </div>
+            </div>
 
+            <div class="col-md-4">
+                <div class="form-group">
+                    Total :
+                    <input style="text-align: right" type="text" readonly="readonly" id="txtTotal" value="0" name="Total" class="form-control" />
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <input type="button" style="margin-top: 20px" value="Add To List" name="AddToList" id="btnAddToList" class="btn btn-success" />
+                </div>
+            </div>
+        </div>
+    </div>
+</fieldset>
+<fieldset>
+    <legend>Restaurant Listed Items</legend>
+    <table style="width: 100%" id="tblRestaurantItemList">
+        <thead>
+            <tr>
+                <th hidden>
+                    Item Id
+                </th>
+
+                <th>Item Name</th>
+
+                <th>Unit Price</th>
+
+                <th>Quantity</th>
+
+                <th>Discount</th>
+
+                <th>Total</th>
+
+                <th>Action</th>
+            </tr>
+        </thead>
+    </table>
+</fieldset>
 
 
 
@@ -229,6 +247,7 @@
 
 
 @*@model ResturantApplication.ViewModel.ProductViewModel
+
     @{
         ViewBag.Title = "New";
     }
