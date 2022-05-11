@@ -332,8 +332,8 @@
     <Content Include="Views\Items\NewItems.cshtml" />
     <Content Include="Views\Items\ItemsIndex.cshtml" />
     <Content Include="Views\Items\Edit.cshtml" />
-    <Content Include="Views\Cashiers\CashierIndex.cshtml" />
-    <Content Include="Views\Cashiers\NewCashier.cshtml" />
+    <Content Include="Views\Cashiers\CashiersIndex.cshtml" />
+    <Content Include="Views\Cashiers\NewCashiers.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

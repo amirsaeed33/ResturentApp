@@ -27,15 +27,14 @@ namespace ResturantApplication.Controllers
 
 
         // GET: Items
-        public async Task<ActionResult> CashierIndex()
+        public async Task<ActionResult> CashiersIndex()
         {
 
             var employeePositions = await _InventoryAppservice2.GetCashiers();
             return View(employeePositions);
         }
 
-
-        public async Task<ActionResult> NewCashier(int id = -1)
+        public async Task<ActionResult> NewCashiers(int id = -1)
         {
             ViewBag.Heading = "Add New Cashier";
             var data = new Cashier();
@@ -75,7 +74,7 @@ namespace ResturantApplication.Controllers
                     IsDeleted = false,
 
                 };
-                return View("NewCashier", cashierInDb);
+                return View("NewCashiers", cashierInDb);
             }
             if (cashier.Id == 0)
             {
@@ -96,7 +95,7 @@ namespace ResturantApplication.Controllers
             }
             _context.SaveChanges();
 
-            return RedirectToAction("CashierIndex", "Cashier");
+            return RedirectToAction("CashiersIndex", "Cashiers");
         }
 
 
@@ -122,7 +121,7 @@ namespace ResturantApplication.Controllers
 
 
             };
-            return View("NewCashier", cashierInDb);
+            return View("NewCashiers", cashierInDb);
         }
 
 
@@ -136,7 +135,7 @@ namespace ResturantApplication.Controllers
 
                 _context.SaveChanges();
             }
-            return RedirectToAction("CashierIndex", "Cashier");
+            return RedirectToAction("CashiersIndex", "Cashiers");
         }
 
 
