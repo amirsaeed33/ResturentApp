@@ -91,32 +91,8 @@ namespace ResturantApplication.Controllers
 
             return RedirectToAction("ItemsIndex", "Items");
 
-
-
-
-
-
-            //if (items.Id == 0)
-            //    _context.Items.Add(items);
-            //else
-            //{
-            //    var itemsInDB = _context.Items.Single(i =>i.Id == items.Id);
-
-            //    itemsInDB.Names = items.Names;
-            //    itemsInDB.ItemPrice = items.ItemPrice;
-
-            //}
-            //_context.SaveChanges();
-
-            //return RedirectToAction("ItemsIndex", "Items");
         }
 
-        //public ActionResult Save()
-        //{
-        //    return View();
-        //}
-
-        
         [HttpPost]
         public ActionResult Edit(int id)
         {

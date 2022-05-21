@@ -222,6 +222,10 @@
     <Compile Include="Migrations\202205091704545_AddTransaction.Designer.cs">
       <DependentUpon>202205091704545_AddTransaction.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202205191247157_AddCashierUpdate.cs" />
+    <Compile Include="Migrations\202205191247157_AddCashierUpdate.Designer.cs">
+      <DependentUpon>202205191247157_AddCashierUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\Cashier.cs" />
@@ -334,6 +338,7 @@
     <Content Include="Views\Items\Edit.cshtml" />
     <Content Include="Views\Cashiers\CashiersIndex.cshtml" />
     <Content Include="Views\Cashiers\NewCashiers.cshtml" />
+    <Content Include="Views\Cashiers\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -383,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205091704545_AddTransaction.resx">
       <DependentUpon>202205091704545_AddTransaction.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205191247157_AddCashierUpdate.resx">
+      <DependentUpon>202205191247157_AddCashierUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

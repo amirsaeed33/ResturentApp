@@ -1,0 +1,66 @@
+﻿@model IEnumerable<ResturantApplication.Models.Cashier>
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Edit Cashier Information</h2>
+
+<br />
+
+@if (!Model.Any())
+{
+    <p>We Dont Have Any Item Yet!</p>
+}
+else
+{
+    <table class="table table-bordered table-hover">
+        <thead>
+            <tr>
+                <th>S/N </th>
+                <th>FULL NAME </th>
+                <th>DATE OF BIRTH</th>
+                <th>GENDER</th>
+                <th>PHONE NUMBER </th>
+                <th>EMAIL </th>
+                <th>CONTACT ADDRESS </th>
+                <th>PERMANENT ADDRESS  </th>
+                <th>L.G.A </th>
+                <th>STATE OF ORIGIN </th>
+                <th>NEXT OF KIN </th>
+                <th>NEXT OF KIN PHONE-NUMBER </th>
+                <th>NEXT OF KIN RELATION </th>
+                <th>POSITION </th>
+                <th>COMPUTER LITERATE </th>
+                <th>PASSPORT </th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var cashier in Model)
+            {
+            <tr>
+                <td>@Html.ActionLink(@cashier.FullName, "Edit", "Cashiers", new { id = cashier.Id }, null) </td>
+
+                <td>
+                @cashier.FullName
+                @cashier.BirthDate
+                @cashier.Gender
+                @cashier.PhoneNumber
+                @cashier.EmailAddress
+                @cashier.ContactAddress
+                @cashier.PermanentAddress
+                @cashier.LGA
+                @cashier.StateOfOrigin
+                @cashier.NameOfNextOfKin
+                @cashier.NextOfKinPhoneNumber
+                @cashier.NextOfKinRelation
+                @cashier.Position
+                @cashier.ComputerLiterate
+                @cashier.Photo
+                </td>
+            </tr>
+            }
+
+        </tbody>
+    </table>

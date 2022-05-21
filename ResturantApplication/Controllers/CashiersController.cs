@@ -64,14 +64,22 @@ namespace ResturantApplication.Controllers
             {
                 var cashierInDb = new Cashier
                 {
-                    FullName = cashier.FullName,
-                    BirthDate = cashier.BirthDate,
-                    Gender = cashier.Gender,
-                    PhoneNumber = cashier.PhoneNumber,
-                    EmailAddress = cashier.EmailAddress,
-                    Position = cashier.Position,
-                    ComputerLiterate = true,
-                    IsDeleted = false,
+                FullName = cashier.FullName,
+                BirthDate = cashier.BirthDate,
+                Gender = cashier.Gender,
+                PhoneNumber = cashier.PhoneNumber,
+                EmailAddress = cashier.EmailAddress,
+                ContactAddress = cashier.ContactAddress,
+                LGA = cashier.LGA,
+                NameOfNextOfKin = cashier.NameOfNextOfKin,
+                NextOfKinPhoneNumber = cashier.NextOfKinPhoneNumber,
+                NextOfKinRelation = cashier.NextOfKinRelation,
+                PermanentAddress = cashier.PermanentAddress,
+                Photo = cashier.Photo,
+                StateOfOrigin = cashier.StateOfOrigin,
+                Position = cashier.Position,
+                ComputerLiterate = true,
+                IsDeleted = false,
 
                 };
                 return View("NewCashiers", cashierInDb);
@@ -83,44 +91,56 @@ namespace ResturantApplication.Controllers
             }
             else
             {
-                var cashierInDb = _context.Cashiers.SingleOrDefault(e => e.Id == cashier.Id);
+                var cashierInDb = _context.Cashiers.SingleOrDefault(c => c.Id == cashier.Id);
                 cashierInDb.FullName = cashier.FullName;
                 cashierInDb.BirthDate = cashier.BirthDate;
                 cashierInDb.Gender = cashier.Gender;
                 cashierInDb.PhoneNumber = cashier.PhoneNumber;
                 cashierInDb.EmailAddress = cashier.EmailAddress;
+                cashierInDb.ContactAddress = cashier.ContactAddress;
+                cashierInDb.LGA = cashier.LGA;
+                cashierInDb.NameOfNextOfKin = cashier.NameOfNextOfKin;
+                cashierInDb.NextOfKinPhoneNumber = cashier.NextOfKinPhoneNumber;
+                cashierInDb.NextOfKinRelation = cashier.NextOfKinRelation;
+                cashierInDb.PermanentAddress = cashier.PermanentAddress;
+                cashierInDb.Photo = cashier.Photo;
+                cashierInDb.StateOfOrigin = cashier.StateOfOrigin;
                 cashierInDb.Position = cashier.Position;
                 cashierInDb.ComputerLiterate = true;
-
             }
             _context.SaveChanges();
 
             return RedirectToAction("CashiersIndex", "Cashiers");
         }
 
-
         [HttpPost]
         public ActionResult Edit(int id)
         {
-            var cashierInDb = _context.Cashiers.SingleOrDefault(i => i.Id == id);
+            var cashierInDb = _context.Cashiers.SingleOrDefault(c => c.Id == id);
 
             if (cashierInDb == null)
                 return HttpNotFound();
 
             var cashier = new Cashier
             {
-
                 FullName = cashierInDb.FullName,
                 BirthDate = cashierInDb.BirthDate,
                 Gender = cashierInDb.Gender,
                 PhoneNumber = cashierInDb.PhoneNumber,
                 EmailAddress = cashierInDb.EmailAddress,
                 Position = cashierInDb.Position,
+                ContactAddress = cashierInDb.ContactAddress,
+                LGA = cashierInDb.LGA,
+                NameOfNextOfKin = cashierInDb.NameOfNextOfKin,
+                NextOfKinPhoneNumber = cashierInDb.NextOfKinPhoneNumber,
+                NextOfKinRelation = cashierInDb.NextOfKinRelation,
+                PermanentAddress = cashierInDb.PermanentAddress,
+                Photo = cashierInDb.Photo,
+                StateOfOrigin = cashierInDb.StateOfOrigin,
                 ComputerLiterate = true,
-                IsDeleted = false,
-
-
+                //IsDeleted = false,
             };
+
             return View("NewCashiers", cashierInDb);
         }
 
@@ -129,13 +149,13 @@ namespace ResturantApplication.Controllers
         {
             if (id > 0)
             {
-                var cashierInDb = _context.Cashiers.Single(i => i.Id == id);
+                var cashierInDb = _context.Cashiers.Single(c => c.Id == id);
 
                 cashierInDb.IsDeleted = true;
 
                 _context.SaveChanges();
             }
-            return RedirectToAction("CashiersIndex", "Cashiers");
+            return RedirectToAction("CashiersIndex", "Cashier");
         }
 
 

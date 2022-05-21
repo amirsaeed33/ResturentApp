@@ -1,4 +1,4 @@
-﻿ @model ResturantApplication.Models.Cashier
+﻿@model ResturantApplication.Models.Cashier
 @{
     ViewBag.Title = "NewCashiers";
     Layout = "~/Views/Shared/_Layout.cshtml";
@@ -23,7 +23,7 @@
         margin: 15px 0;
     }
 
-    h1{
+    h1 {
         color: white;
     }
 
@@ -71,7 +71,6 @@
         border-radius: 4px;
         padding: 5px 5px 5px 10px;
         background-color: #ffffff;
-        
     }
 </style>
 
@@ -88,7 +87,7 @@
         <div class="container">
             <div class="row-cols-1">
                 <div class="col-md-4">
-                    <div class="formgroup">
+                    <div class="form-group">
                         <h3>Full Name:</h3>
                         <h5>
                             @Html.TextBoxFor(c => c.FullName, null, new
@@ -107,13 +106,11 @@
                 <div class="col-md-4">
                     <div class="form-group">
                         <h3>Gender:</h3>
-                        @*<h5>@Html.TextBoxFor(e => e.Gender, new { @class = "form-control", id = "Gender", placeholder = "E.g Male or Female" })</h5>*@
                         <select name="Gender" id="Gender">
                             <option value="none" selected disabled hidden> Select Gender</option>
-                            <option value="male">Male</option>
-                            <option value="female">Female</option>
+                            <option value="Male">Male</option>
+                            <option value="Female">Female</option>
                         </select>
-
                         @Html.ValidationMessageFor(c => c.Gender)
                     </div>
                 </div>
@@ -142,28 +139,173 @@
                 </div>
             </div>
 
-            <div class="col-md-4">
-                <div class="formgroup">
-                    <h3>
-                        <label class="switch pr-5 switch-primary mr-3">
-                            <span>ComputerLiterate?</span>
-                            <input id="ComputerLiterate" data-id="ComputerLiterate"
-                                   @(Model.ComputerLiterate || !(Model.Id > 0) ? Html.Raw("checked=\"checked\"") : Html.Raw(""))
-                                   type="checkbox" tabindex="6">
-                            <span class="slider"></span>
-                        </label>
-                    </h3>
+            <<div class="col-md-4">
+                <div class="form-group">
+                    <h3>Contact Address:</h3>
+                    @Html.TextBoxFor(c => c.ContactAddress, new { @class = "form-control", id = "ContactAddress", placeholder = "Enter your Contact Address" })
+                    @Html.ValidationMessageFor(c => c.ContactAddress)
                 </div>
             </div>
-        </div>
 
-        <div class="card-footer">
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h3>Permanent Address:</h3>
+                    @Html.TextBoxFor(c => c.PermanentAddress, new { @class = "form-control", id = "PermanentAddress", placeholder = "Enter your Permanent Address" })
+                    @Html.ValidationMessageFor(c => c.PermanentAddress)
+                </div>
+            </div>
 
-            <button type="submit" class="btn-success">Save</button>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h3>L.G.A:</h3>
+                    @Html.TextBoxFor(c => c.LGA, new { @class = "form-control", id = "LGA", placeholder = "Enter your L.G.A" })
+                    @Html.ValidationMessageFor(c => c.LGA)
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="form-group">
+                    <h3>State Of Origin:</h3>
+
+                    <select name="StateOfOrigin" id="StateOfOrigin">
+                        <option value="none" selected disabled hidden> Select State Of Origi</option>
+                        <option value="Abia">Abia</option>
+                        <option value="Adamawa">Adamawa</option>
+                        <option value="Akwa-Ibom">Akwa-Ibom</option>
+                        <option value="Anambra">Anambra</option>
+                        <option value="Bauchi">Bauchi</option>
+                        <option value="Bayelsa">Bayelsa</option>
+                        <option value="Benue">Benue</option>
+                        <option value="Borno">Borno</option>
+                        <option value="Cross-River">Cross-River</option>
+                        <option value="Delta">Delta</option>
+                        <option value="Ebonyi">Ebonyi</option>
+                        <option value="Edo">Edo</option>
+                        <option value="Ekiti">Ekiti</option>
+                        <option value="Enugu">Enugu</option>
+                        <option value="Gombe">Gombe</option>
+                        <option value="Imo">Imo</option>
+                        <option value="Jigawa">Jigawa</option>
+                        <option value="Kaduna">Kaduna</option>
+                        <option value="Kano">Kano</option>
+                        <option value="Katsina">Katsina</option>
+                        <option value="Kebbi">Kebbi</option>
+                        <option value="Kogi">Kogi</option>
+                        <option value="Kwara">Kwara</option>
+                        <option value="Lagos">Lagos</option>
+                        <option value="Nasarawa">Nasarawa</option>
+                        <option value="Niger">Niger</option>
+                        <option value="Ogun">Ogun</option>
+                        <option value="Ondo">Ondo</option>
+                        <option value="Osun">Osun</option>
+                        <option value="Oyo">Oyo</option>
+                        <option value="Plateau">Plateau</option>
+                        <option value="Rivers">Rivers</option>
+                        <option value="Sokoto">Sokoto</option>
+                        <option value="Taraba">Taraba</option>
+                        <option value="Yobe">Yobe</option>
+                        <option value="Zamfara">Zamfara</option>
+                    </select>
+
+                    @Html.ValidationMessageFor(c => c.StateOfOrigin)
+                </div>
+            </div>
+
         </div>
 
     </fieldset>
 
+
+    <fieldset>
+        <legend>
+            Next of Kin Information:
+        </legend>
+
+        <div class="container">
+            <div class="row-cols-1">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Name:</h3>
+                        <h5>@Html.TextBoxFor(c => c.NameOfNextOfKin, new { @class = "form-control", id = "NameOfNextOfKin", placeholder = "Name Of Next Of Kin" })</h5>
+                        @Html.ValidationMessageFor(c => c.NameOfNextOfKin)
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Phone Number:</h3>
+                        <h5>@Html.TextBoxFor(c => c.NextOfKinPhoneNumber, new { @class = "form-control", id = "NextOfKinPhoneNumber", placeholder = "Phone Number Of Next Of Kin" })</h5>
+                        @Html.ValidationMessageFor(c => c.NextOfKinPhoneNumber)
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Relationship:</h3>
+                        <h5>@Html.TextBoxFor(c => c.NextOfKinRelation, new { @class = "form-control", id = "NextOfKinRelation", placeholder = "Relation With Next Of Kin" })</h5>
+                        @Html.ValidationMessageFor(c => c.NextOfKinRelation)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </fieldset>
+
+    <fieldset>
+        <legend>
+            Other Information:
+        </legend>
+
+        <div class="container">
+            <div class="row-cols-1">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Position:</h3>
+                        <select name="Position" id="Gender">
+                            <option value="none" selected disabled hidden> Select Position</option>
+                            <option value="Manager">Manager</option>
+                            <option value="Ass.Manager1">Ass.Manager1</option>
+                            <option value="Ass.Manager2">Ass.Manager2</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Cashier">Cashier</option>
+                            <option value="Cleaner">Cleaner</option>
+                            <option value="Security">Security</option>
+                        </select>
+                        @Html.ValidationMessageFor(c => c.Position)
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>
+                            <label class="switch pr-5 switch-primary mr-3">
+                                <span>ComputerLiterate?</span>
+                                <input id="ComputerLiterate" data-id="ComputerLiterate"
+                                       @(Model.ComputerLiterate || !(Model.Id > 0) ? Html.Raw("checked=\"checked\"") : Html.Raw(""))
+                                       type="checkbox" tabindex="6">
+                                <span class="slider"></span>
+                            </label>
+                        </h3>
+                    </div>
+                </div>
+
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <h3>Passport:</h3>
+                        <label for="file">Upload Image</label>
+                        <input id="file" type="file" name="file" />
+                        @Html.ValidationMessageFor(c => c.Photo)
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </fieldset>
+
+    <div class="card-footer">
+
+        <button type="submit" class="btn-success">Save</button>
+    </div>
 
     @Html.HiddenFor(i => i.Id)
 
