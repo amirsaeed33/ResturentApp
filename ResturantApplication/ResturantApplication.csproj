@@ -194,10 +194,6 @@
     <Compile Include="Migrations\202204162057515_ApplyAnnotationsToItemsNames.Designer.cs">
       <DependentUpon>202204162057515_ApplyAnnotationsToItemsNames.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202204291055077_Add-Changes.cs" />
-    <Compile Include="Migrations\202204291055077_Add-Changes.Designer.cs">
-      <DependentUpon>202204291055077_Add-Changes.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\202205031526395_Unknown.cs" />
     <Compile Include="Migrations\202205031526395_Unknown.Designer.cs">
       <DependentUpon>202205031526395_Unknown.cs</DependentUpon>
@@ -225,6 +221,10 @@
     <Compile Include="Migrations\202205191247157_AddCashierUpdate.cs" />
     <Compile Include="Migrations\202205191247157_AddCashierUpdate.Designer.cs">
       <DependentUpon>202205191247157_AddCashierUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202205231313229_RemoveUnWanitedThings.cs" />
+    <Compile Include="Migrations\202205231313229_RemoveUnWanitedThings.Designer.cs">
+      <DependentUpon>202205231313229_RemoveUnWanitedThings.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
@@ -368,9 +368,6 @@
     <EmbeddedResource Include="Migrations\202204162057515_ApplyAnnotationsToItemsNames.resx">
       <DependentUpon>202204162057515_ApplyAnnotationsToItemsNames.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202204291055077_Add-Changes.resx">
-      <DependentUpon>202204291055077_Add-Changes.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205031526395_Unknown.resx">
       <DependentUpon>202205031526395_Unknown.cs</DependentUpon>
     </EmbeddedResource>
@@ -391,6 +388,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202205191247157_AddCashierUpdate.resx">
       <DependentUpon>202205191247157_AddCashierUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202205231313229_RemoveUnWanitedThings.resx">
+      <DependentUpon>202205231313229_RemoveUnWanitedThings.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

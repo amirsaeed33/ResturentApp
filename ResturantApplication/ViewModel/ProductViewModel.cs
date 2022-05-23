@@ -18,8 +18,6 @@ namespace ResturantApplication.ViewModel
         [Required]
         public int? Quantity { get; set; }
         public int? Total { get; set; }
-        public byte? EmployeePositionId { get; set; }
-
         public IEnumerable<Items> Items { get; set; }
         public IEnumerable<PaymentType> PaymentTypes { get; set; }
         public IEnumerable<Cashier> Cashiers { get; set; }
