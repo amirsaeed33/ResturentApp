@@ -7,13 +7,13 @@ namespace ResturantApplication.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class AddChanges : IMigrationMetadata
+    public sealed partial class RemoveUnWanitedThings : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(AddChanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveUnWanitedThings));
         
         string IMigrationMetadata.Id
         {
-            get { return "202204291055077_Add-Changes"; }
+            get { return "202205231313229_RemoveUnWanitedThings"; }
         }
         
         string IMigrationMetadata.Source
