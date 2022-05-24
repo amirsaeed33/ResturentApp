@@ -65,7 +65,7 @@
             <tr id="@string.Format("{0}-{1}","Cashier",cashier.Id)">
                 <td>@e</td>
                 <td>@cashier.FullName</td>
-                <td>@cashier.BirthDate</td>
+                <td>@cashier.BirthDate.ToString("dd-MMMM-yyyy")</td>
                 <td>@cashier.Gender</td>
                 <td>@cashier.PhoneNumber  </td>
                 <td>@cashier.EmailAddress</td>
@@ -98,14 +98,14 @@
             debugger
             if (confirm("Are you Sure u want to Delete Cashier? ")) {
 
-                window.location = "/Cashier/Delete?id=" + id;
+                window.location = "/Cashiers/Delete?id=" + id;
             }
         }
         function AddCashier() {
-            window.location = "/Cashier/NewCashiers";
+            window.location = "/Cashiers/NewCashiers";
         }
         function Edit(id) {
-            window.location = "/Cashier/NewCashiers?id=" + id;
+            window.location = "/Cashiers/NewCashiers?id=" + id;
         }
     </script>
 }

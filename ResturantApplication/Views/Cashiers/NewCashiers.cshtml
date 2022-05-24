@@ -4,7 +4,28 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
+<script>
+    $(document).ready(function () {
+        var $input = $('.datepicker').pickadate({
+            selectMonths: true,
+            selectYears: 100,
+            selectYears: true,
+            selectMonths: true,
+        });
 
+        if (!(parseInt('@Model.Id') > 0)) {
+
+
+        // Use the picker object directly.
+        for (var i = 0; i < $input.length; i++) {
+            var picker = $($input[i]).pickadate('picker');
+            var date = new Date();
+            picker.set('select', [date.getFullYear(), date.getMonth(), date.getDate()])
+            }
+        }
+    });
+
+</script>
 <style>
     * {
         padding: 0;
@@ -98,9 +119,10 @@
                 </div>
                 <div class="col-md-4">
                     <div class="form-group">
-                        <h3>Date of Birth:</h3>
-                        <h5>@Html.TextBoxFor(c => c.BirthDate, new { @class = "form-control", id = "BirthDate", placeholder = "Date of Birth (01 Jan 1990)" })</h5>
-                        @Html.ValidationMessageFor(c => c.BirthDate)
+                        <div class="form-group">
+                            <label for="exampleFormControlSelect1">Date of Birth *</label>
+                            <input class="form-control datepicker" id="BirthDate" placeholder="mm/dd/yyyy" name="BirthDate" value="@Model.BirthDate.ToString("dd/MMMM/yyyy")" />
+                        </div>
                     </div>
                 </div>
                 <div class="col-md-4">
